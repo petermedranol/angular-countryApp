@@ -11,11 +11,13 @@ import { Region } from '../../interfaces/region.type';
 export class ByRegionPageComponent implements OnInit{
 
   constructor( private countriesService: CountriesService) { }
-  
+
   ngOnInit(): void {
     this.countries = this.countriesService.casheStore.byRegion.countries;
     this.selectedRegion = this.countriesService.casheStore.byRegion.region;
   }
+
+  public isLoading: boolean = false;
 
   public countries: Country[] = [];
 
@@ -23,10 +25,12 @@ export class ByRegionPageComponent implements OnInit{
   public selectedRegion?: Region;
 
   searchByRegion( region:Region ) {
+    this.isLoading = true;
     this.selectedRegion = region;
     this.countriesService.searchRegion( region )
       .subscribe( countries => {
         this.countries = countries;
+        this.isLoading = false;
       });
   }
 

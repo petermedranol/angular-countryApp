@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, count, map, of, tap } from 'rxjs';
-import { Country } from '../interfaces/country';
+
 import { CacheStore } from '../interfaces/cache-store.interface';
+import { Country } from '../interfaces/country';
 import { Region } from '../interfaces/region.type';
 
 @Injectable({providedIn: 'root'})

@@ -19,11 +19,17 @@ export class ByConutryPageComponent implements OnInit{
     this.initialValue = this.countriesService.casheStore.byCountries.term;
   }
 
+  public isLoading: boolean = false;
+
   public countries: Country[] = [];
 
   searchByCountry(query: string): void {
+    this.isLoading = true;
     this.countriesService.searchCountry(query)
-      .subscribe(countries => this.countries = countries);
+      .subscribe(countries => {
+        this.countries = countries;
+        this.isLoading = false;
+      });
   }
 
 }
