@@ -4,6 +4,7 @@
   [placeholder]="placeholder"
   class="form-control"
   #txtInput
+  [value]="initialValue"
   (keyup)="onKeyPresss(txtInput.value)"
   (dblclick)="onDoubleClick(txtInput)"
 >
